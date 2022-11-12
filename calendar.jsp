@@ -22,8 +22,6 @@
   String year = (String)request.getParameter("year");
   String month = (String)request.getParameter("month");
   String day = (String)request.getParameter("day");
-  System.out.println("MURAHATA");
-  System.out.println(year);
   LocalDate localDate = null;
   if (year == null || month == null || day == null) {
     // 日付が送信されていないので、現在時刻を元に日付の設定を行う
@@ -43,7 +41,6 @@
   
   String event = (String)eventMap.get(year + month + day);
   request.setAttribute("event", event);
-  request.setAttribute("year", year);
 %>
 <!DOCTYPE HTML>
 <html>
@@ -63,8 +60,6 @@ ul {
       <li><input type="submit" value="送信" />
       <li><c:out value="${fn:join(dates, '/')}" /> (<fmt:formatDate value="${date}" pattern="E" />)</li>
       <li><c:out value="${event}" /></li>
-      <c:out value="${year}" />
-      <%= year %>
     </ul>
   </form>
 </body>
